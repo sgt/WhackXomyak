@@ -1,6 +1,7 @@
 import scenes.MeadowScene;
 import com.haxepunk.HXP;
 import com.haxepunk.Engine;
+
 class Main extends Engine {
     override public function init() {
 #if debug
@@ -8,4 +9,8 @@ class Main extends Engine {
 #end
         HXP.scene = new MeadowScene();
     }
+	
+	public static function main() {
+		new Main();
+	}
 }
