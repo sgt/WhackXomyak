@@ -1,4 +1,5 @@
-import scenes.MeadowScene;
+import com.haxepunk.graphics.Image;
+import scenes.WhackLevel;
 import com.haxepunk.HXP;
 import com.haxepunk.Engine;
 
@@ -7,7 +8,7 @@ class Main extends Engine {
 #if debug
 		HXP.console.enable();
 #end
-        HXP.scene = new MeadowScene();
+        HXP.scene = new WhackLevel(new Image("graphics/meadow.png"));
     }
 	
 	public static function main() {

@@ -15,6 +15,7 @@
     <orderEntry type="jdk" jdkName="Haxe 3.0.0" jdkType="Haxe SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="HaxePunk" level="application" />
+    <orderEntry type="library" name="ash" level="application" />
   </component>
 </module>
 
