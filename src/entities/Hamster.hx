@@ -47,7 +47,7 @@ class Hamster extends Entity {
     }
 
     public function isShot():Bool {
-        return collidePoint(x, y, Input.mouseX, Input.mouseY) && Input.mouseDown;
+        return collidePoint(x, y, Input.mouseX, Input.mouseY) && Input.mousePressed;
     }
 
     public function isReady():Bool {

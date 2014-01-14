@@ -9,7 +9,7 @@ import entities.Hamster;
 import entities.Crosshairs;
 import com.haxepunk.Entity;
 import com.haxepunk.Scene;
-using Lambda;
+//using Lambda;
 
 class WhackLevel extends Scene {
 
