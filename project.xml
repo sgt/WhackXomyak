@@ -5,8 +5,9 @@
     <app file="WhackXomyak" main="Main" path="bin"/>
 
     <window fps="60" background="0x0000ff"/>
-    <window width="800" height="600" resizable="true" unless="mobile"/>
-    <window width="0" height="0" fullscreen="true" if="mobile"/>
+    <window width="800" height="600" resizable="true" if="desktop"/>
+    <!--<window width="0" height="0" fullscreen="true" if="mobile"/>-->
+    <window width="0" height="0" if="mobile"/>
     <window orientation="landscape" vsync="true" antialiasing="0" if="cpp"/>
 
     <source path="src"/>
