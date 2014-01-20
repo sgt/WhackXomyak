@@ -19,7 +19,8 @@ class Main extends Engine {
         //HXP.stage.addEventListener(Event.RESIZE, onResize);
 
         HXP.stage.align = StageAlign.TOP_LEFT;
-        HXP.stage.scaleMode = #if mobile StageScaleMode.NO_SCALE #else StageScaleMode.SHOW_ALL #end;
+        HXP.stage.scaleMode = StageScaleMode.NO_SCALE;
+        //#if mobile StageScaleMode.NO_SCALE #else StageScaleMode.SHOW_ALL #end;
 /*
         #if mobile
         var ratio:Float = Capabilities.screenResolutionY / 600;
