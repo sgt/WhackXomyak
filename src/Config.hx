@@ -6,4 +6,7 @@ class Config {
 
     // this one grows shorter with time.
     public inline static var StayingOutBasePeriod:Float = 2;
+
+    // height of level in pixels
+    public inline static var LevelHeight = 600;
 }

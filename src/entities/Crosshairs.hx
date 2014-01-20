@@ -7,15 +7,14 @@ import com.haxepunk.Entity;
 
 class Crosshairs extends Entity {
 
-    private static var CenterCoords:Array<Int> = [54, 44];
-
-    private var img:Graphic;
+    private static var CenterCoords:Array<Int> = [48, 48];
 
     public function new() {
         super(0, 0);
-        img = new Image("graphics/crosshairs.png");
-        set_graphic(img);
+
+        set_graphic(Assets.crosshairs);
         Mouse.hide();
+        set_layer(0);
     }
 
     public override function update() {

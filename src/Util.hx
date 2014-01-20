@@ -6,21 +6,20 @@ class Util {
         return s;
     }
 
-    public static function shuffle<T>(a:Array<T>):Array<T> {
-        for (i in 0...a.length) {
+    public static function shuffle<T>(a:Array<T>, ?n:Int):Array<T> {
+        var r:Array<T> = [];
+        if (n == null) n = a.length;
+        for (i in 0...(n - 1)) {
             var ni = Std.random(a.length - i - 1) + i + 1;
             var tmp = a[ni];
-            a[ni] = a[i];
-            a[i] = tmp;
+            r[ni] = a[i];
+            r[i] = a[ni];
         }
-        return a;
+        return r;
     }
 
+
     public static function pickRandomElements<T>(a:Array<T>, n:Int):Array<T> {
-        if (n > 0) {
-            return shuffle(a.copy()).splice(0, n);
-        } else {
-            return new Array<T>();
-        }
+        return shuffle(a, n).splice(0, n);
     }
 }

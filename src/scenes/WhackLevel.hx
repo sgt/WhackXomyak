@@ -1,7 +1,5 @@
 package scenes;
 
-import entities.HamsterState;
-import entities.HamsterState;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.Graphic;
@@ -17,7 +15,7 @@ class WhackLevel extends Scene {
 
     private var elapsed:Float;
     private var killed:Int = 0;
-    private var maxSimultaneousHamsters:Int = 2;
+    private var maxSimultaneousHamsters:Int = 8;
 
     private var bg:Graphic;
     private var score:Text;
@@ -28,12 +26,14 @@ class WhackLevel extends Scene {
     }
 
     private static var HamsterCoords:Array<Array<Int>> =
-    [[103, 84],
-    [341, 57],
-    [563, 84],
-    [100, 255],
-    [338, 255],
-    [564, 251]];
+    [[136, 36],
+    [426, 37 ],
+    [712, 39],
+    [290, 167],
+    [581, 161],
+    [711, 276],
+    [437, 291],
+    [138, 274]];
 
     private static var nHamsters:Int = HamsterCoords.length;
     private static var hamsters:Array<Hamster> = new Array<Hamster>();
@@ -42,7 +42,7 @@ class WhackLevel extends Scene {
         score = new Text(Util.repeatString("0", scoreDigits), 0, 0);
         score.resizable = true;
         var overlay:Entity = new Entity(0, 20, score);
-        //overlay.layer = 0;
+//overlay.layer = 0;
         return overlay;
     }
 
@@ -52,11 +52,7 @@ class WhackLevel extends Scene {
     }
 
     private function readyHamsters():Array<Hamster> {
-        return hamsters.filter(function(h:Hamster) { return h.isReady(); });
-    }
-
-    private function activeHamsters():Array<Hamster> {
-        return hamsters.filter(function(h:Hamster) { return h.state == HamsterState.OutThere; });
+        return hamsters.filter(function(h:Hamster) { return h.isReadyToAppear(); });
     }
 
     private function hamstersToShow():Array<Hamster> {
@@ -73,7 +69,7 @@ class WhackLevel extends Scene {
         addGraphic(bg);
 
         for (i in 0...nHamsters) {
-            var h = new Hamster(HamsterCoords[i][0], HamsterCoords[i][1]);
+            var h = new Hamster(HamsterCoords[i][0], HamsterCoords[i][1] - 1);
             hamsters.push(h);
             add(h);
         }
@@ -86,19 +82,13 @@ class WhackLevel extends Scene {
     public override function update() {
         elapsed += HXP.elapsed;
 
-        for (h in hamstersToShow()) {
-            h.appear();
-        }
+        for (h in hamstersToShow()) h.appear();
 
-        for (h in activeHamsters()) {
+        for (h in hamsters) {
             if (h.isShot()) {
                 h.dieViolentDeath();
                 ++killed;
                 updateScore();
-            }
-
-            if (h.elapsed >= Config.StayingOutBasePeriod) {
-                h.disappear();
             }
         }
 
