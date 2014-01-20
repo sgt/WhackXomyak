@@ -7,12 +7,11 @@ class Assets {
     private static inline var HAMSTER_H = 219;
 
     public static var meadow(default, null):Image;
-    public static var meadowClouds(default, null):Image;
+    public static var meadowCloudsAssetName(default, null):String = "graphics/meadow_clouds.png";
     public static var crosshairs(default, null):Image;
 
     public static function load() {
         meadow = new Image("graphics/meadow.png");
-        meadowClouds = new Image("graphics/meadow_clouds.png");
         crosshairs = new Image("graphics/crosshairs.png");
     }
 

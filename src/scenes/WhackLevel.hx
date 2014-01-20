@@ -1,5 +1,6 @@
 package scenes;
 
+import com.haxepunk.graphics.Backdrop;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.Graphic;
@@ -35,8 +36,10 @@ class WhackLevel extends Scene {
     [437, 291],
     [138, 274]];
 
+    private var meadowClouds:Backdrop;
+
     private static var nHamsters:Int = HamsterCoords.length;
-    private static var hamsters:Array<Hamster> = new Array<Hamster>();
+    private var hamsters:Array<Hamster>;
 
     private function createScore():Entity {
         score = new Text(Util.repeatString("0", scoreDigits), 0, 0);
@@ -68,6 +71,10 @@ class WhackLevel extends Scene {
 
         addGraphic(bg);
 
+        meadowClouds = new Backdrop(Assets.meadowCloudsAssetName, true, false);
+        addGraphic(meadowClouds);
+
+        hamsters = new Array<Hamster>();
         for (i in 0...nHamsters) {
             var h = new Hamster(HamsterCoords[i][0], HamsterCoords[i][1] - 1);
             hamsters.push(h);
@@ -81,6 +88,8 @@ class WhackLevel extends Scene {
 
     public override function update() {
         elapsed += HXP.elapsed;
+
+        meadowClouds.x -= 0.1;
 
         for (h in hamstersToShow()) h.appear();
 
